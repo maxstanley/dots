@@ -1,0 +1,22 @@
+! Extensions
+URxvt.perl-ext-common: default,xkr-clipboard
+
+! Allow Ctrl and Shift together
+URxvt.iso14755: false
+
+! Enable Copy Paste
+URxvt.keysym.Shift-Control-C: perl:clipboard:copy
+URxvt.keysym.Shift-Control-V: perl:clipboard:paste
+URxvt.keysym.Control-Insert:  perl:clipboard:copy
+
+! Disable Old Copy Paste
+URxvt.keysym.Control-Meta-c: builtin-string:
+URxvt.keysym.Control-Meta-v: builtin-string:
+
+! Disable Scroll Bar
+URxvt.scrollBar: false
+
+! Font
+*.font: xft:Inconsolata for Powerline:style=Medium:size=8
+! URxvt.font: xft:Inconsolata for Powerline:style=Medium:size=12
+URxvt.letterSpace: 1

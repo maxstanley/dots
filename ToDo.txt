@@ -1,0 +1,11 @@
+ List of applications installed
+ Graphical Interface
+ Low Battery Warning
+ Simplified Bluetooth and WiFi Connection
+ Get Function buttons working
+ Reduce Hibernation Power Consumption
+ Reduce Overall Power Consumption
+ Lock Screen
+ Background Changer
+ Startpage
+ Color Scheme
