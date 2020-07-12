@@ -1,2 +1,0 @@
-https://wiki.archlinux.org/index.php/Nftables#Working_with_Docker
-https://wiki.archlinux.org/index.php/Internet_sharing#Enable_packet_forwarding
