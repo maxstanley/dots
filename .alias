@@ -8,6 +8,7 @@ alias dcr="docker-compose stop; docker-compose rm -f; docker-compose up -d --bui
 alias dcrd="docker-compose -f docker-compose.dev.yml stop; docker-compose -f docker-compose.dev.yml rm -f; docker-compose -f docker-compose.dev.yml up -d --build"
 alias dcri="docker-compose -f docker-compose.image.yml stop; docker-compose -f docker-compose.image.yml rm -f; docker-compose -f docker-compose.image.yml up -d --build"
 alias jupyter="docker run --rm -p 8888:8888 --user root -e GRANT_SUDO=yes -e JUPYTER_ENABLE_LAB=yes -v /home/max/work_test/:/home/jovyan/work/ jupyter/all-spark-notebook"
+alias jupyter_tensorflow="docker run --rm -p 8888:8888 --user root -e GRANT_SUDO=yes -e JUPYTER_ENABLE_LAB=yes -v /home/max/work_test/:/home/jovyan/work/ jupyter/tensorflow-notebook"
 
 # Git
 alias gf="git fetch"
