@@ -19,3 +19,4 @@ if [[ -z $DISPLAY ]] && [[ $(tty) = /dev/tty1 ]]; then exec startx; fi
 [[ ! -f $HOME/.scripts/extract.sh ]] || source $HOME/.scripts/extract.sh
 [[ ! -f $HOME/.scripts/youtube.sh ]] || source $HOME/.scripts/youtube.sh
 [[ ! -f $HOME/.scripts/lock.sh ]] || source $HOME/.scripts/lock.sh
+[[ ! -f $HOME/.scripts/load_work.sh ]] || source $HOME/.scripts/load_work.sh
