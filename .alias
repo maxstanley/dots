@@ -8,8 +8,12 @@ alias vi="nvim"
 
 # ls
 alias ls="ls -lh --color=auto"
-alias ll="ls -lha --color=auto"
+alias ll="ls -lhA --color=auto"
 
 # sudo
 alias pls='sudo $(history -p \!\!)'
 alias please='sudo $(history -p \!\!)'
+
+# Recycle Bin
+alias rm="mv -b -t /tmp/.recycle_bin/" 
+alias rm_bin="/usr/bin/rm -rf /tmp/.recycle_bin/*"

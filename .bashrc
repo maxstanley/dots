@@ -10,5 +10,9 @@ HISTCONTROL=$HISTCONTROL:ignoredups
 
 
 [[ -f $HOME/.alias ]] && . $HOME/.alias
+[[ -f $HOME/.env ]] && . $HOME/.env
 
 [[ -f $HOME/.scripts/extract.sh ]] && . $HOME/.scripts/extract.sh
+
+# Ensure /tmp/recycle_bin/ exists
+mkdir -p /tmp/.recycle_bin/
