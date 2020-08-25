@@ -55,7 +55,7 @@ pip3 install --user neovim
 
 nvim +PlugInstall +qall
 
-nvim +CocInstall coc-actions coc-angular coc-clangd coc-cmake coc-css coc-emmet coc-eslint coc-fzf-preview coc-html coc-json coc-python coc-rls coc-rome coc-sh coc-sql coc-todolist coc-tsserver coc-yaml coc-yank +qall
+nvim +CocInstall coc-actions coc-angular coc-clangd coc-cmake coc-css coc-emmet coc-eslint coc-fzf-preview coc-html coc-json coc-python coc-rls coc-rome coc-sh coc-snippets coc-sql coc-todolist coc-tsserver coc-yaml coc-yank +qall
 
 echo "Cleaning Up"
 

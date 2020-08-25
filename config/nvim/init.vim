@@ -85,8 +85,9 @@ let g:closetag_regions = {
 
 " NerdTree
 " https://github.com/preservim/nerdtree
-" Always open NerdTree
-autocmd vimenter * NERDTree
+" Always open NerdTree and focus on file
+autocmd VimEnter * NERDTree
+autocmd VimEnter * wincmd p
 " Open NerdTree on Ctrl-n
 map <C-n> :NERDTreeToggle<CR>
 " Close vim if only NerdTree is open
@@ -104,3 +105,8 @@ inoremap <silent><expr> <Tab>
       \ pumvisible() ? "\<C-n>" :
       \ <SID>check_back_space() ? "\<Tab>" :
       \ coc#refresh()
+
+inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
+inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
+inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
+
