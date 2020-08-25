@@ -1,15 +1,15 @@
-alias history="history | less"
-alias ll="ls -a"
-alias ls="ls -lh --color"
-alias vi="vim"
+#
+# ~/.alias
+#
 
-# Docker
-alias dcr="docker-compose stop; docker-compose rm -f; docker-compose up -d --build"
-alias dcrd="docker-compose -f docker-compose.dev.yml stop; docker-compose -f docker-compose.dev.yml rm -f; docker-compose -f docker-compose.dev.yml up -d --build"
-alias dcri="docker-compose -f docker-compose.image.yml stop; docker-compose -f docker-compose.image.yml rm -f; docker-compose -f docker-compose.image.yml up -d --build"
-alias jupyter="docker run --rm -p 8888:8888 --user root -e GRANT_SUDO=yes -e JUPYTER_ENABLE_LAB=yes -v /home/max/work_test/:/home/jovyan/work/ jupyter/all-spark-notebook"
-alias jupyter_tensorflow="docker run --rm -p 8888:8888 --user root -e GRANT_SUDO=yes -e JUPYTER_ENABLE_LAB=yes -v /home/max/work_test/:/home/jovyan/work/ jupyter/tensorflow-notebook"
+# vim
+alias vim="nvim"
+alias vi="nvim"
 
-# Git
-alias gf="git fetch"
-alias gp="git pull"
+# ls
+alias ls="ls -lh --color=auto"
+alias ll="ls -lha --color=auto"
+
+# sudo
+alias pls='sudo $(history -p \!\!)'
+alias please='sudo $(history -p \!\!)'
