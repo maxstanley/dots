@@ -1,4 +1,5 @@
 #!/bin/bash
+# Source: https://wiki.archlinux.org/index.php/Bash/Functions
 extract() {
 	local e=0 i c
 	for i; do
