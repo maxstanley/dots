@@ -1,5 +1,25 @@
 #!/bin/bash
 
+echo "Checking dependencies..."
+
+packages=(
+	"/usr/bin/git"
+	"/usr/bin/python"
+	"/usr/bin/pip3"
+	"/usr/bin/node"
+)
+
+for package in "${packages[@]}"; do
+	[[ ! -f $package ]] && echo "$package" not found && exit
+done
+
+nodeMajorVersion=$(node --version | cut -d '.' -f1)
+nodeMajorVersion="${nodeMajorVersion:1}"
+nodeMinorVersion=$(node --version | cut -d '.' -f2)
+
+[[ $nodeMajorVersion -lt 10 ]] && echo "Node Version must be greater than 10.12" && exit
+[[ $nodeMajorVersion -eq 10 ]] && [[ $nodeMinorVersion -lt 12 ]] && echo "Node Version must be greater than 10.12" && exit
+
 echo "Cloning maxstanley/dots"
 
 git clone git@github.com:maxstanley/dots.git
@@ -17,6 +37,26 @@ files=(
 
 for file in "${files[@]}"; do
 	echo "Copying $file to $HOME/$file"
-	# cp dots/$file $HOME/$file
-	cp $file $HOME/$file
+	cp dots/$file $HOME/$file
+	# cp $file $HOME/$file
 done
+
+echo "Setting Up NeoVIM Configuration"
+
+mkdir -p $HOME/.config/nvim/
+
+cp -r dots/config/nvim/* $HOME/.config/nvim/
+# cp -r config/nvim/* $HOME/.config/nvim/
+
+sh -c 'curl -fLo "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/autoload/plug.vim --create-dirs \
+       https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
+
+pip3 install --user neovim
+
+nvim +PlugInstall +qall
+
+nvim +CocInstall coc-actions coc-angular coc-clangd coc-cmake coc-css coc-emmet coc-eslint coc-fzf-preview coc-html coc-json coc-python coc-rls coc-rome coc-sh coc-sql coc-todolist coc-tsserver coc-yaml coc-yank +qall
+
+echo "Cleaning Up"
+
+rm -rf dots/

@@ -16,3 +16,7 @@ HISTCONTROL=$HISTCONTROL:ignoredups
 
 # Ensure /tmp/recycle_bin/ exists
 mkdir -p /tmp/.recycle_bin/
+
+# Update NeoVIM Plugins
+# called in subshell to prevent output 
+(vim +PlugUpdate +qall +silent --headless &)
