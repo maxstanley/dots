@@ -27,7 +27,8 @@ echo "Cloning maxstanley/dots into $HOME/.dots/"
 mkdir -p $HOME/.dots/
 git clone git@github.com:maxstanley/dots.git $HOME/.dots/
 
-./link_files.sh
+chmod +x $HOME/.dots/link_files.sh
+$HOME/.dots/link_files.sh
 
 echo "Setting Up NeoVIM"
 
