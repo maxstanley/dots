@@ -3,5 +3,5 @@
 ## Usage
 
 ```
-curl -L https://maxstanley.uk/setup.sh | sudo sh
+curl -L https://maxstanley.uk/setup.sh | sh
 ```
