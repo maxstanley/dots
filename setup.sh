@@ -27,30 +27,7 @@ echo "Cloning maxstanley/dots into $HOME/.dots/"
 mkdir -p $HOME/.dots/
 git clone git@github.com:maxstanley/dots.git $HOME/.dots/
 
-echo "Setting Up Max Stanley's dot files!"
-
-files=(
-	".alias"
-	".bash_logout"
-	".bash_profile"
-	".bashrc"
-	".env"
-	".tmux.conf"
-)
-
-for file in "${files[@]}"; do
-	echo "Linking $HOME/.dots/$file to $HOME/$file"
-	ln -sfn $HOME/.dots/$file $HOME/$file
-done
-
-config_dir=(
-	"nvim"
-)
-
-for dir in "${config_dirs[@]}"; do
-#	mkdir -p $HOME/.config/$dir
-	ln -sfn $HOME/.dots/config/$dir $HOME/.config/$dir
-done
+./link_files.sh
 
 echo "Setting Up NeoVIM"
 
