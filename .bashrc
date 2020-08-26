@@ -13,9 +13,7 @@ HISTCONTROL=$HISTCONTROL:ignoredups
 [[ -f $HOME/.env ]] && . $HOME/.env
 
 [[ -f $HOME/.scripts/extract.sh ]] && . $HOME/.scripts/extract.sh
-
-# Ensure /tmp/recycle_bin/ exists
-mkdir -p /tmp/.recycle_bin/
+[[ -f $HOME/.scripts/update_dots.sh ]] && . $HOME/.scripts/update_dots.sh
 
 # Update NeoVIM Plugins
 # called in subshell to prevent output 
