@@ -20,9 +20,12 @@ nodeMinorVersion=$(node --version | cut -d '.' -f2)
 [[ $nodeMajorVersion -lt 10 ]] && echo "Node Version must be greater than 10.12" && exit
 [[ $nodeMajorVersion -eq 10 ]] && [[ $nodeMinorVersion -lt 12 ]] && echo "Node Version must be greater than 10.12" && exit
 
-echo "Cloning maxstanley/dots"
+echo "Cloning maxstanley/dots into $HOME/.dots/"
 
-git clone git@github.com:maxstanley/dots.git
+[[ -f $HOME/.dots/README.md ]] && echo "$HOME/.dots/ Already Exists." && echo "Please run update_dots to update configuration" && exit
+
+mkdir -p $HOME/.dots/
+git clone git@github.com:maxstanley/dots.git $HOME/.dots/
 
 echo "Setting Up Max Stanley's dot files!"
 
@@ -36,17 +39,20 @@ files=(
 )
 
 for file in "${files[@]}"; do
-	echo "Copying $file to $HOME/$file"
-	cp dots/$file $HOME/$file
-	# cp $file $HOME/$file
+	echo "Linking $HOME/.dots/$file to $HOME/$file"
+	ln -sfn $HOME/.dots/$file $HOME/$file
 done
 
-echo "Setting Up NeoVIM Configuration"
+config_dir=(
+	"nvim"
+)
 
-mkdir -p $HOME/.config/nvim/
+for dir in "${config_dirs[@]}"; do
+#	mkdir -p $HOME/.config/$dir
+	ln -sfn $HOME/.dots/config/$dir $HOME/.config/$dir
+done
 
-cp -r dots/config/nvim/* $HOME/.config/nvim/
-# cp -r config/nvim/* $HOME/.config/nvim/
+echo "Setting Up NeoVIM"
 
 sh -c 'curl -fLo "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/autoload/plug.vim --create-dirs \
        https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
@@ -57,6 +63,3 @@ nvim +PlugInstall +qall
 
 nvim +CocInstall coc-actions coc-angular coc-clangd coc-cmake coc-css coc-emmet coc-eslint coc-fzf-preview coc-html coc-json coc-python coc-rls coc-rome coc-sh coc-snippets coc-sql coc-todolist coc-tsserver coc-yaml coc-yank +qall
 
-echo "Cleaning Up"
-
-rm -rf dots/
