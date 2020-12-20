@@ -8,7 +8,6 @@
 # Skip duplicate history on arrow up
 HISTCONTROL=$HISTCONTROL:ignoredups
 
-
 [[ -f $HOME/.alias ]] && . $HOME/.alias
 [[ -f $HOME/.env ]] && . $HOME/.env
 
@@ -18,3 +17,7 @@ HISTCONTROL=$HISTCONTROL:ignoredups
 # Update NeoVIM Plugins
 # called in subshell to prevent output 
 (vim +PlugUpdate +qall +silent --headless &)
+
+export GPG_TTY=$(tty)
+export PATH="$PATH:~/go/bin/"
+export GOPATH="/home/max/go"
