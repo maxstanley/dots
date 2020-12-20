@@ -47,10 +47,16 @@ nnoremap ,nhs :nohlsearch<CR>
 set wildmenu " Autocomplete in Menu
 " set mouse=a " Make Copy Pasting Easier (Won't let you paster in putty)
 
+" Show Whitespace
+set list
+set listchars=eol:$,tab:>\ ,trail:~,extends:>,precedes:<
 
 " Plugins
 
 call plug#begin()
+
+" Language Collection
+Plug 'sheerun/vim-polyglot'
 
 " File explorer
 Plug 'scrooloose/nerdtree'
@@ -71,6 +77,9 @@ call plug#end()
 
 " Plugin Settings
 
+" vim-polyglot
+" https://github.com/sheerun/vim-polyglot
+
 " vim-closetag
 " https://github.com/alvan/vim-closetag
 let g:closetag_filenames = '*.html,*.xhtml,*.phtml'
@@ -86,8 +95,7 @@ let g:closetag_regions = {
 " NerdTree
 " https://github.com/preservim/nerdtree
 " Always open NerdTree and focus on file
-autocmd VimEnter * NERDTree
-autocmd VimEnter * wincmd p
+autocmd VimEnter * NERDTree | wincmd p
 " Open NerdTree on Ctrl-n
 map <C-n> :NERDTreeToggle<CR>
 " Close vim if only NerdTree is open

@@ -11,8 +11,9 @@ dot_files=(
 	".tmux.conf"
 )
 
-config_dir=(
+config_dirs=(
 	"nvim"
+	"alacritty"
 )
 
 script_files=(
@@ -28,7 +29,7 @@ done
 mkdir -p $HOME/.config
 
 for dir in "${config_dirs[@]}"; do
-	ln -sfn $HOME/.dots/config/$dir $HOME/.config/$dir
+	ln -sfn $HOME/.dots/config/$dir $HOME/.config/
 done
 
 mkdir -p $HOME/.scripts
