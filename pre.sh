@@ -100,6 +100,8 @@ pacstrap /mnt \
 # Change root command.
 CHROOT="arch-chroot /mnt";
 
+$CHROOT sed -i 's/block filesystems/block encrypt lvm2 filesystems/g' /etc/mkinitcpio.conf;
+
 # Create initial ramdisk.
 $CHROOT mkinitcpio -p linux-lts;
 
@@ -124,12 +126,12 @@ $CHROOT echo "127.0.0.1	spectre.localdomain	spectre" >> /etc/hosts;
 $CHROOT echo "::1		localhost" >> /etc/hosts;
 
 # Install Boot Loader.
-$CHROOT pacman -S grub efibootmgr dosfstools os-prober mtools;
+$CHROOT pacman -S --noconfirm grub efibootmgr dosfstools os-prober mtools;
 sed -i 's/#GRUB_ENABLE_CRYPTODISK=y/GRUB_ENABLE_CRYPTODISK=y/g' /mnt/etc/default/grub
 sed -i 's/quiet/cryptdevice=\/dev\/sda3:volgroup0:allow-discards quiet/g' /mnt/etc/default/grub
 
 # Update microcode.
-$CHROOT pacman -S intel-ucode;
+$CHROOT pacman -S --noconfirm intel-ucode;
 
 mkdir /mnt/boot/EFI/
 mount /dev/sda1 /mnt/boot/EFI;
