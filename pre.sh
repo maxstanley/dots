@@ -143,5 +143,4 @@ mkswap /mnt/swapfile;
 echo '/swapfile none swap sw 0 0' | tee -a /mnt/etc/fstab;
 
 # Set Root password.
-echo "Set root password by running: passwd";
-
+$CHROOT echo -e "SuperSecret123\nSuperSecret123" | passwd;
