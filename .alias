@@ -10,6 +10,3 @@ alias vi="nvim"
 alias ls="ls -lh --color=auto"
 alias ll="ls -lhA --color=auto"
 
-# sudo
-alias pls='sudo $(history -p \!\!)'
-alias please='sudo $(history -p \!\!)'
