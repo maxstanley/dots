@@ -7,24 +7,27 @@ loadkeys us;
 # Update the clock.
 timedatectl set-ntp true;
 
+# Wipe partition tables.
+wipefs --all --force /dev/sda
+
 (
 echo -e "g\n"; # Create an empty GPT partition table.
 echo -e "n\n\n\n+512M\n"; # Add a new EFI Partition.
-echo -e "t\n1\n1\n"; # Make the partition type EFI System.
+echo -e "t\n1\n"; # Make the partition type EFI System.
 echo -e "n\n\n\n+512M\n"; # Create boot partition.
 echo -e "n\n\n\n\n"; # Add a main partition.
 echo -e "t\n2\n30\n"; # Make the partition type Linux LVM.
 echo -e "w\n"; # Write Changes.
 
-) | fdisk /dev/sda`
+) | fdisk /dev/sda
 
 # Format the partitions.
 mkfs.fat -F32 /dev/sda1; # EFI Partition.
-mkfs.ext4 /dev/sda2; # Boot Partition.
+mkfs.ext4 -F /dev/sda2; # Boot Partition.
 
 # Encrypt the Root Partition.
-cryptsetup --cipher aes-xts-plain64 --key-file password.txt --use-random luksFormat /dev/sda3;
-cryptsetup open --type luks /dev/sda3 lvm;
+cryptsetup --cipher aes-xts-plain64 --key-file password.txt --batch-mode --use-random luksFormat /dev/sda3;
+cryptsetup open --type luks --key-file password.txt /dev/sda3 lvm;
 
 # Setup LVM
 pvcreate --dataalignment 1m /dev/mapper/lvm;
@@ -36,8 +39,8 @@ vgscan;
 vgchange -ay;
 
 # Format the Root Partition.
-mkfs.ext4 /dev/volgroup0/lv_root;
-mkfs.ext4 /dev/volgroup0/lv_home;
+mkfs.ext4 -F /dev/volgroup0/lv_root;
+mkfs.ext4 -F /dev/volgroup0/lv_home;
 
 # Mount partitions.
 mount /dev/volgroup0/lv_root /mnt;
@@ -55,6 +58,8 @@ curl "https://archlinux.org/mirrorlist/?country=GB&protocol=https&ip_version=4" 
 # Remove comments from mirrorlist.
 sed -i 's/#Server/Server/g' /etc/pacman.d/mirrorlist;
 
+exit 0;
+
 # Mount partitions.
 # mount /dev/sda2 /mnt/;
 # mkdir -p /mnt/boot/efi/;
@@ -66,8 +71,6 @@ pacstrap /mnt base linux-lts linux-lts-headers linux-firmware iwd dhcpcd;
 # Install non-essential packages.
 pacstrap /mnt \
 				tmux \
-				dhcpcd \
-				iwd \
 				sudo \
 				neovim \
 				openssh \
