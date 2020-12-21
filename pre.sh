@@ -59,8 +59,6 @@ curl "https://archlinux.org/mirrorlist/?country=GB&protocol=https&ip_version=4" 
 # Remove comments from mirrorlist.
 sed -i 's/#Server/Server/g' /etc/pacman.d/mirrorlist;
 
-exit 0;
-
 # Mount partitions.
 # mount /dev/sda2 /mnt/;
 # mkdir -p /mnt/boot/efi/;
