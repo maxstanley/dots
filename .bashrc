@@ -16,5 +16,5 @@ HISTCONTROL=$HISTCONTROL:ignoredups
 
 # Update NeoVIM Plugins
 # called in subshell to prevent output 
-(vim +PlugUpdate +qall +silent --headless &)
+(vim +PlugUpdate +qall +silent --headless 2> /dev/null &)
 

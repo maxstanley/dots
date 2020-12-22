@@ -1,3 +1,6 @@
+" Insparation Credits:
+" TheSPrimeagen: https://github.com/awesome-streamers/awesome-streamerrc/tree/master/ThePrimeagen
+
 " Do not try to be VIM compatible
 set nocompatible
 
@@ -7,78 +10,85 @@ syntax enable " Enable Syntax Highlighting
 "Encoding
 set encoding=utf-8
 
-" Turn of filetype detection and indentation on
-filetype plugin indent on
-
-"" colorscheme
-" set termguicolors " Use Terminal GUI Colors
-" set term=screen-256color
+" Set Leader Character
+let mapleader = " "
 
 " Dark Background colours
 set background=dark
 
-" Spaces & Tabs
-" Number of Visual spaces in a tab
-" let tabsize = 4
-" execute "set tabstop=".tabsize
-" execute "set shiftwidth=".tabsize
-" execute "set softtabstop=".tabsize
+" Show Whitespace
+set listchars=eol:$,tab:>\ ,trail:~,extends:>,precedes:<
+" Toogle listchars
+nnoremap <silent> <Leader>w :set list!<CR>
+
+" Turn of filetype detection and indentation on
+filetype plugin indent on
 set autoindent " Auto Indent New Lines
 set smartindent " Enable smart indent
-set smarttab " Enable Smart Tab
-
-" UI Config
-set number " Show Line Numbers
-" set showcmd " Show Command Line in the bottom bar
-" set cursorline " Hightlight the current line
-set lazyredraw " Redraw only when required
 set showmatch " Highlights matching [{()}]
-set scrolloff=4 " Always show at least 4 line above/below the cursor
+set tabstop=4
+set softtabstop=4
+set shiftwidth=4
+
+" Show Relative Line Numbers
+set relativenumber
+" Redraw only when required
+set lazyredraw
+" Highlights matching [{()}]
+set showmatch
+" Always show at least 4 line above/below the cursor
+set scrolloff=4
 
 " Searching
 set incsearch " Search the file as characters are entered
 set hlsearch " Highlight all matches when searching
 set ignorecase " Ignores case whensearching
 set smartcase " Enable Smart Case Search
-" Use ,nhs to stop highligh    ting matches
-nnoremap ,nhs :nohlsearch<CR>
+nnoremap <Leader>c :nohlsearch<CR>
 
-" Misc
-set wildmenu " Autocomplete in Menu
-" set mouse=a " Make Copy Pasting Easier (Won't let you paster in putty)
+" Autocomplete in Menu
+set wildmenu
 
-" Show Whitespace
-set list
-set listchars=eol:$,tab:>\ ,trail:~,extends:>,precedes:<
+" Map jj to exit from insert mode.
+imap jj <Esc>
+
+" vim-polyglot
+" https://github.com/sheerun/vim-polyglot
+let g:polyglot_disabled = ['autoindent']
 
 " Plugins
 
 call plug#begin()
 
+" Auto-close XML Tags
+Plug 'alvan/vim-closetag'
+
+" Automatically Pair Brackets
+Plug 'jiangmiao/auto-pairs'
+
 " Language Collection
 Plug 'sheerun/vim-polyglot'
-
-" File explorer
-Plug 'scrooloose/nerdtree'
 
 " Fuzzy Matching
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 
+" Markdown Preview
+Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && yarn install' }
+
 " coc Intellisense
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
-" Matching things
-Plug 'tpope/vim-surround'
-Plug 'jiangmiao/auto-pairs'
-Plug 'alvan/vim-closetag'
+" File explorer
+Plug 'scrooloose/nerdtree'
+
+" Debugging
+Plug 'puremourning/vimspector'
+Plug 'szw/vim-maximizer'
 
 call plug#end()
 
 " Plugin Settings
-
-" vim-polyglot
-" https://github.com/sheerun/vim-polyglot
 
 " vim-closetag
 " https://github.com/alvan/vim-closetag
@@ -92,14 +102,22 @@ let g:closetag_regions = {
     \ 'javascript.jsx': 'jsxRegion',
     \ }
 
-" NerdTree
-" https://github.com/preservim/nerdtree
-" Always open NerdTree and focus on file
-autocmd VimEnter * NERDTree | wincmd p
-" Open NerdTree on Ctrl-n
-map <C-n> :NERDTreeToggle<CR>
-" Close vim if only NerdTree is open
-autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
+" fzf
+" https://github.com/junegunn/fzf.vim
+
+" Open fzf
+nnoremap <silent> <Leader>f :Files<CR>
+" Uses the_silver_searcher
+nnoremap <silent> <Leader>fa :Ag<CR>
+
+" markdown-preservim
+" https://github.com/iamcco/markdown-preview.nvim
+
+" Toggle Preview
+nmap <Leader>m <Plug>MarkdownPreviewToggle
+nnoremap <silent> <Leader>f :Files<CR>
+nnoremap <silent> <Leader>f :Files<CR>
+nnoremap <silent> <Leader>f :Files<CR>
 
 " coc.nvim
 "
@@ -117,4 +135,39 @@ inoremap <silent><expr> <Tab>
 inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
 inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
 inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
+
+" NerdTree
+" https://github.com/preservim/nerdtree
+
+" Open NerdTree on Ctrl-n
+map <Leader>n :NERDTreeToggle<CR>
+" Close vim if only NerdTree is open
+autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
+
+" vimspector
+
+fun! GotoWindow(id)
+  call win_gotoid(a:id)
+  MaximizerToggle
+endfun
+
+" remaps
+nnoremap <Leader>m :MaximizerToggle!<CR>
+nnoremap <Leader>d :call vimspector#Launch()<CR>
+nnoremap <Leader>dc :call GotoWindow(g:vimspector_session_windows.code)<CR>
+nnoremap <Leader>dt :call GotoWindow(g:vimspector_session_windows.tagpage)<CR>
+nnoremap <Leader>dw :call GotoWindow(g:vimspector_session_windows.variables)<CR>
+nnoremap <Leader>ds :call GotoWindow(g:vimspector_session_windows.stack_trace)<CR>
+nnoremap <Leader>do :call GotoWindow(g:vimspector_session_windows.output)<CR>
+nnoremap <Leader>de :call vimspector#Reset()<CR>
+
+nmap <Leader>dl <Plug>VimspectorStepInto
+nmap <Leader>dj <Plug>VimspectorStepOver
+nmap <Leader>dk <Plug>VimspectorStepOut
+nmap <Leader>d_ <Plug>VimspectorRestart
+nnoremap <Leader>d<space> :call vimspector#Continue()<CR>
+
+nmap <Leader>dr <Plug>VimspectorRunToCursor
+nmap <Leader>db <Plug>VimspectorToggleBreakpoint
+nmap <Leader>dbc <Plug>VimspectorToggleConditionalBreakpoint
 

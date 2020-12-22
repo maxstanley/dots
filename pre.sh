@@ -92,7 +92,9 @@ pacstrap /mnt \
 				rustup \
 				powertop \
 				htop \
-				lvm2
+				lvm2 \
+				fzf \
+				the_silver_searcher
 
 # Generate an fstab file.
 # genfstab -U /mnt >> /mnt/etc/fstab;

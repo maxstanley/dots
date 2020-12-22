@@ -20,12 +20,12 @@ nodeMinorVersion=$(node --version | cut -d '.' -f2)
 [[ $nodeMajorVersion -lt 10 ]] && echo "Node Version must be greater than 10.12" && exit
 [[ $nodeMajorVersion -eq 10 ]] && [[ $nodeMinorVersion -lt 12 ]] && echo "Node Version must be greater than 10.12" && exit
 
-echo "Cloning maxstanley/dots into $HOME/.dots/"
+echo "Linking maxstanley/dots into $HOME/.dots/"
 
 [[ -f $HOME/.dots/README.md ]] && echo "$HOME/.dots/ Already Exists." && echo "Please run update_dots to update configuration" && exit
 
-mkdir -p $HOME/.dots/
-git clone git@github.com:maxstanley/dots.git $HOME/.dots/
+rm -rf ~/.dots
+ln -sfn $PWD $HOME/.dots
 
 chmod +x $HOME/.dots/link_files.sh
 $HOME/.dots/link_files.sh
