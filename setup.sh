@@ -37,5 +37,5 @@ sh -c 'curl -fLo "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/autoload/plug.
 
 pip3 install --user neovim
 
-nvim +PlugInstall +CocInstall coc-actions coc-angular coc-clangd coc-cmake coc-css coc-emmet coc-eslint coc-fzf-preview coc-go coc-html coc-json coc-python coc-rls coc-rome coc-sh coc-snippets coc-sql coc-todolist coc-tsserver coc-yaml coc-yank +qall
+nvim +PlugInstall +CocInstall coc-actions coc-angular coc-clangd coc-cmake coc-css coc-emmet coc-eslint coc-fzf-preview coc-go coc-html coc-json coc-python coc-rls coc-rome coc-rust-analyzer coc-sh coc-snippets coc-sql coc-texlab coc-todolist coc-tsserver coc-yaml coc-yank +qall
 

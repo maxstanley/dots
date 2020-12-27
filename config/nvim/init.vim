@@ -13,6 +13,9 @@ set encoding=utf-8
 " Set Leader Character
 let mapleader = " "
 
+" Set backspace
+set backspace=indent,eol,start
+
 " Dark Background colours
 set background=dark
  
@@ -60,7 +63,7 @@ imap jj <Esc>
 
 " vim-polyglot
 " https://github.com/sheerun/vim-polyglot
-let g:polyglot_disabled = ['autoindent']
+let g:polyglot_disabled = ['autoindent', 'cpp-modern', 'cmake', 'docker-compose', 'go', 'javascript', 'jsx', 'markdown', 'nginx', 'protobuf', 'python', 'rust', 'sh', 'typescript']
 
 " Plugins
 
@@ -74,6 +77,33 @@ Plug 'jiangmiao/auto-pairs'
 
 " Language Collection
 Plug 'sheerun/vim-polyglot'
+" C/C++
+Plug 'bfrg/vim-cpp-modern'
+" cmake
+Plug 'pboettch/vim-cmake-syntax'
+" docker-compose
+Plug 'ekalinin/Dockerfile.vim'
+" Go
+Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
+" JavaScript
+Plug 'pangloss/vim-javascript'
+" JSX
+Plug 'maxmellon/vim-jsx-pretty'
+" Markdown
+Plug 'godlygeek/tabular'
+Plug 'plasticboy/vim-markdown'
+" NGINX
+Plug 'chr4/nginx.vim'
+" Protobuf
+Plug 'uarun/vim-protobuf'
+" Python
+Plug 'vim-python/python-syntax'
+" Rust
+Plug 'rust-lang/rust.vim'
+" sh
+Plug 'arzg/vim-sh'
+" Typescript
+Plug 'HerringtonDarkholme/yats.vim'
 
 " Fuzzy Matching
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
