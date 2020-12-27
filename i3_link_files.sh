@@ -9,6 +9,7 @@ dot_files=(
 config_dirs=(
 	"latexmk"
 	"i3"
+	"i3status"
 )
 
 for file in "${dot_files[@]}"; do
