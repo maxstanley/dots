@@ -172,3 +172,10 @@ bar {
 
 # Autostart xfce4-power-manager when i3 is loaded.
 exec_always --no-startup-id /usr/bin/xfce4-power-manager
+
+# Autostart light-locker when i3 is loaded.
+exec_always --no-startup-id /usr/bin/light-locker --lock-on-lid --lock-on-suspend
+
+# Lock screen when $mode+l is pressed.
+bindsym $mod+Control+l exec --no-startup-id systemctl suspend, mode "default"
+

@@ -97,7 +97,8 @@ pacstrap /mnt \
 				fzf \
 				the_silver_searcher \
 				texlive-core \
-				zathura
+				zathura \
+				light-locker
 
 # Generate an fstab file.
 # genfstab -U /mnt >> /mnt/etc/fstab;
