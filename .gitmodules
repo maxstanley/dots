@@ -1,0 +1,3 @@
+[submodule "scripts/tmux-sessions"]
+	path = scripts/tmux-sessions
+	url = git@github.com:maxstanley/tmux-sessions.git

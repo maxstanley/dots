@@ -13,6 +13,7 @@ HISTCONTROL=$HISTCONTROL:ignoredups
 
 [[ -f $HOME/.scripts/extract.sh ]] && . $HOME/.scripts/extract.sh
 [[ -f $HOME/.scripts/update_dots.sh ]] && . $HOME/.scripts/update_dots.sh
+[[ -f $HOME/.scripts/tmux_sessions.sh ]] && . $HOME/.scripts/tmux_sessions.sh
 
 # Update NeoVIM Plugins
 # called in subshell to prevent output 

@@ -19,6 +19,7 @@ config_dirs=(
 script_files=(
 	"extract.sh"
 	"update_dots.sh"
+	"tmux_sessions.sh"
 )
 
 for file in "${dot_files[@]}"; do
