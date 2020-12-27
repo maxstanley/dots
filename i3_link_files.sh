@@ -7,6 +7,7 @@ dot_files=(
 )
 
 config_dirs=(
+	"latexmk"
 	"i3"
 )
 

@@ -86,6 +86,7 @@ pacstrap /mnt \
 				python-pip \
 				nodejs-lts-fermium \
 				yarn \
+				npm \
 				xorg-xinput \
 				clang \
 				openvpn \
@@ -94,7 +95,9 @@ pacstrap /mnt \
 				htop \
 				lvm2 \
 				fzf \
-				the_silver_searcher
+				the_silver_searcher \
+				texlive-core \
+				zathura
 
 # Generate an fstab file.
 # genfstab -U /mnt >> /mnt/etc/fstab;

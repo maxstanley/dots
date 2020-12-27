@@ -92,6 +92,9 @@ Plug 'scrooloose/nerdtree'
 Plug 'puremourning/vimspector'
 Plug 'szw/vim-maximizer'
 
+" Run shell commands in the background
+Plug 'skywind3000/asyncrun.vim'
+
 call plug#end()
 
 " Plugin Settings
@@ -120,10 +123,10 @@ nnoremap <silent> <Leader>fa :Ag<CR>
 " https://github.com/iamcco/markdown-preview.nvim
 
 " Toggle Preview
-nmap <Leader>m <Plug>MarkdownPreviewToggle
-nnoremap <silent> <Leader>f :Files<CR>
-nnoremap <silent> <Leader>f :Files<CR>
-nnoremap <silent> <Leader>f :Files<CR>
+" Markdown Preview
+nmap <Leader>pm <Plug>MarkdownPreviewToggle
+" Latex Preview
+nnoremap <silent> <Leader>pl :AsyncRun latexmk -pvc -pdf %<CR>
 
 " coc.nvim
 "
