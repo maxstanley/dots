@@ -19,3 +19,5 @@ HISTCONTROL=$HISTCONTROL:ignoredups
 # called in subshell to prevent output 
 (vim +PlugUpdate +qall +silent --headless 2> /dev/null &)
 
+[ -z "$TMUX" ] && exec tmux new -s $(python3 $HOME/.scripts/tmux-sessions/start.py)
+
