@@ -1,10 +1,10 @@
-" Insparation Credits:
+" Inspiration Credits:
 " TheSPrimeagen: https://github.com/awesome-streamers/awesome-streamerrc/tree/master/ThePrimeagen
 
 " Do not try to be VIM compatible
 set nocompatible
 
-" Color Settings
+" Colour Settings
 syntax enable " Enable Syntax Highlighting
 
 "Encoding
@@ -15,13 +15,19 @@ let mapleader = " "
 
 " Dark Background colours
 set background=dark
+ 
+" Check Spelling
+set spell spelllang=en_gb
+set nospell
+" Toggle Spelling Highlighting
+nnoremap <silent> <Leader>z :set spell!<CR>
 
-" Show Whitespace
+" Show White space
 set listchars=eol:$,tab:>\ ,trail:~,extends:>,precedes:<
-" Toogle listchars
+" Toggle listchars
 nnoremap <silent> <Leader>w :set list!<CR>
 
-" Turn of filetype detection and indentation on
+" Turn of file type detection and indentation on
 filetype plugin indent on
 set autoindent " Auto Indent New Lines
 set smartindent " Enable smart indent
@@ -30,8 +36,8 @@ set tabstop=4
 set softtabstop=4
 set shiftwidth=4
 
-" Show Relative Line Numbers
-set relativenumber
+" Show Hybrid Line Numbers
+set number relativenumber
 " Redraw only when required
 set lazyredraw
 " Highlights matching [{()}]
@@ -42,11 +48,11 @@ set scrolloff=4
 " Searching
 set incsearch " Search the file as characters are entered
 set hlsearch " Highlight all matches when searching
-set ignorecase " Ignores case whensearching
+set ignorecase " Ignores case when searching
 set smartcase " Enable Smart Case Search
 nnoremap <Leader>c :nohlsearch<CR>
 
-" Autocomplete in Menu
+" Auto-complete in Menu
 set wildmenu
 
 " Map jj to exit from insert mode.
