@@ -125,9 +125,16 @@ Plug 'szw/vim-maximizer'
 " Run shell commands in the background
 Plug 'skywind3000/asyncrun.vim'
 
+" Color Scheme
+Plug 'chriskempson/base16-vim'
+
 call plug#end()
 
 " Plugin Settings
+
+" Base-16 colorscheme
+let base16colorspace=256
+colorscheme base16-default-dark
 
 " vim-closetag
 " https://github.com/alvan/vim-closetag
