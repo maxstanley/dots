@@ -53,7 +53,8 @@ set incsearch " Search the file as characters are entered
 set hlsearch " Highlight all matches when searching
 set ignorecase " Ignores case when searching
 set smartcase " Enable Smart Case Search
-nnoremap <Leader>c :nohlsearch<CR>
+set inccommand=nosplit " Show live substitution changes
+nnoremap <Leader>h :nohlsearch<CR>
 
 " Auto-complete in Menu
 set wildmenu

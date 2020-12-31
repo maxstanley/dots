@@ -20,6 +20,7 @@ script_files=(
 	"extract.sh"
 	"update_dots.sh"
 	"tmux_sessions.sh"
+	"tmux_socket.sh"
 	"tmux-sessions"
 )
 
