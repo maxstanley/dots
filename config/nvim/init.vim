@@ -25,6 +25,9 @@ set nospell
 " Toggle Spelling Highlighting
 nnoremap <silent> <Leader>z :set spell!<CR>
 
+" Disable folding
+set nofoldenable
+
 " Show White space
 set listchars=eol:$,tab:>\ ,trail:~,extends:>,precedes:<
 " Toggle listchars
@@ -217,4 +220,12 @@ nnoremap <Leader>d<space> :call vimspector#Continue()<CR>
 nmap <Leader>dr <Plug>VimspectorRunToCursor
 nmap <Leader>db <Plug>VimspectorToggleBreakpoint
 nmap <Leader>dbc <Plug>VimspectorToggleConditionalBreakpoint
+
+let g:go_fmt_command = "goimports"
+let g:go_highlight_types = 1
+let g:go_highlight_fields = 1
+let g:go_highlight_functions = 1
+let g:go_highlight_function_calls = 1
+let g:go_highlight_extra_types = 1
+let g:go_highlight_generate_tags = 1
 
