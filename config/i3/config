@@ -180,5 +180,5 @@ exec_always --no-startup-id /usr/bin/light-locker --lock-on-lid --lock-on-suspen
 bindsym $mod+Control+l exec --no-startup-id systemctl suspend, mode "default"
 
 # Allow US and GB Keyboards to be toggled using $mod + ctrl
-exec_always --no-startup-id setxkbmap -model pc105 -layout us,gb -option 'grp:alt_shift_toggle'
+exec_always --no-startup-id setxkbmap -model pc105 -layout us,gb -option 'grp:shifts_toggle'
 
