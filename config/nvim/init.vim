@@ -33,6 +33,9 @@ set listchars=eol:$,tab:>\ ,trail:~,extends:>,precedes:<
 " Toggle listchars
 nnoremap <silent> <Leader>w :set list!<CR>
 
+" Prevent VIM wrapping words
+set linebreak
+
 " Turn of file type detection and indentation on
 filetype plugin indent on
 set autoindent " Auto Indent New Lines
