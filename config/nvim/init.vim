@@ -70,7 +70,7 @@ imap jj <Esc>
 
 " vim-polyglot
 " https://github.com/sheerun/vim-polyglot
-let g:polyglot_disabled = ['autoindent', 'cpp-modern', 'cmake', 'docker-compose', 'go', 'javascript', 'jsx', 'markdown', 'nginx', 'protobuf', 'python', 'rust', 'sh', 'typescript']
+" let g:polyglot_disabled = ['autoindent', 'cpp-modern', 'cmake', 'docker-compose', 'go', 'javascript', 'jsx', 'markdown', 'nginx', 'protobuf', 'python', 'rust', 'sh', 'typescript']
 
 " Plugins
 
@@ -83,7 +83,7 @@ Plug 'alvan/vim-closetag'
 Plug 'jiangmiao/auto-pairs'
 
 " Language Collection
-Plug 'sheerun/vim-polyglot'
+" Plug 'sheerun/vim-polyglot'
 " C/C++
 Plug 'bfrg/vim-cpp-modern'
 " cmake
@@ -110,7 +110,7 @@ Plug 'rust-lang/rust.vim'
 " sh
 Plug 'arzg/vim-sh'
 " Typescript
-Plug 'HerringtonDarkholme/yats.vim'
+Plug 'leafgarland/typescript-vim'
 
 " Fuzzy Matching
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
@@ -231,4 +231,3 @@ let g:go_highlight_functions = 1
 let g:go_highlight_function_calls = 1
 let g:go_highlight_extra_types = 1
 let g:go_highlight_generate_tags = 1
-
