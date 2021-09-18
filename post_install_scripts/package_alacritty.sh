@@ -5,5 +5,5 @@ function install_alacritty() {
 	config_dirs=(
 		"alacritty"
 	)
-	link_files "${config_dirs[@]}"
+	link_folders "${config_dirs[@]}"
 }

@@ -5,7 +5,7 @@ function install_neovim() {
 	config_dirs=(
 		"nvim"
 	)
-	link_files "${config_dirs[@]}"
+	link_folders "${config_dirs[@]}"
 
 	install_python
 	install_curl
