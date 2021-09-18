@@ -14,3 +14,7 @@ source_files_in_folder ./helper_scripts/*.sh
 source_files_in_folder ./post_install_scripts/*.sh
 source_files_in_folder ./post_install_scripts/**/*.sh
 
+install_default_packages
+link_default_files
+install_development
+install_display_manager

@@ -13,7 +13,7 @@ function install_default_packages() {
 	install_neovim
 }
 
-function link_default_file() {
+function link_default_files() {
 	dot_files=(
 		".alias"
 		".env"
