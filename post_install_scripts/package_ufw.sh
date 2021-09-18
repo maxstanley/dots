@@ -4,6 +4,6 @@ function install_ufw() {
 
 	enable_service ufw
 
-	$ROOT_COMMAND ufw enable
+	$ROOT_COMMAND ufw --force enable
 }
 
