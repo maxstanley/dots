@@ -4,6 +4,7 @@ function install_development() {
 	install_neovim
 
 	# Install languages.
+	install_c
 	install_golang
 	install_nodejs
 	install_python
