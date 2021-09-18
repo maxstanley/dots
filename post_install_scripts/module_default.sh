@@ -5,7 +5,9 @@ function install_default_packages() {
 		sudo \
 		wget \
 		man-db \
-		man-pages
+		man-pages \
+		fzf \
+		the_silver_searcher
 
 	$ROOT_COMMAND usermod -a -G wheel $DOT_USER	
 
