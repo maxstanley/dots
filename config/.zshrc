@@ -11,6 +11,4 @@ autoload -Uz compinit
 compinit
 # End of lines added by compinstall
 
-source ~/.alias
-
 eval "$(starship init zsh)"

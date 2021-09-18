@@ -10,3 +10,6 @@ alias vi="nvim"
 alias ls="ls -lh --color=auto"
 alias la="ls -lhA --color=auto"
 
+# cargo
+. "$HOME/.cargo/env"
+
