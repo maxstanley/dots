@@ -2,8 +2,8 @@ function install_tmux() {
 	$SCRIPT_INSTALL_COMMAND \
 		tmux	
 
-	dot_files=(
-		".tmux.conf"
+	config=(
+		"tmux"
 	)
-	link_files "${dot_files[@]}"
+	link_folders "${config[@]}"
 }
