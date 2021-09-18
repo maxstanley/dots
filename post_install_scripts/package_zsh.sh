@@ -7,4 +7,9 @@ function install_zsh() {
 		".zshrc"
 	)
 	link_files "${dot_files[@]}"
+
+	config_files=(
+		"starship.toml"
+	)
+	link_folders "${config_files[@]}"
 }

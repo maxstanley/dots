@@ -23,7 +23,8 @@ function source_all_files() {
 
 source_all_files
 
-install_default_packages
-link_default_files
-install_development
-install_display_manager
+install_zsh
+# install_default_packages
+# link_default_files
+# install_development
+# install_display_manager
