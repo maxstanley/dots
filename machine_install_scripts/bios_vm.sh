@@ -13,7 +13,7 @@ wipefs --all --force /dev/sda
 echo -e "g\n"; # Create an empty GPT partition table.
 echo -e "n\n\n\n+512M\n"; # Add a new EFI Partition.
 echo -e "t\n82\n"; # Make the partition type EFI System.
-echo -e "t\n2\n30\n"; # Make the partition type Linux LVM.
+echo -e "n\n\n\n\n"; # Add a main partition.
 echo -e "w\n"; # Write Changes.
 ) | fdisk /dev/sda
 
