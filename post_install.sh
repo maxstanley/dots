@@ -3,6 +3,7 @@
 export ROOT_COMMAND="sudo "
 export SCRIPT_INSTALL_COMMAND="${ROOT_COMMAND}pacman -S --noconfirm --needed"
 export DOTS_FOLDER="$HOME/.dots"
+export DOT_USER="max"
 
 function source_all_files() {
 	for file in $DOTS_FOLDER/helper_scripts/*.sh; do

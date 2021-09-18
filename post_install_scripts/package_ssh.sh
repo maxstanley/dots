@@ -3,5 +3,6 @@ function install_ssh() {
 		openssh
 
 	enable_service sshd
+	$ROOT_COMMAND usermod -a -G ssh $DOT_USER	
 }
 

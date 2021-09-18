@@ -7,6 +7,8 @@ function install_default_packages() {
 		man-db \
 		man-pages
 
+	$ROOT_COMMAND usermod -a -G wheel $DOT_USER	
+
 	install_curl
 	install_ssh
 	install_tmux
