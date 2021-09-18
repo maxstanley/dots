@@ -1,13 +1,13 @@
 function install_default_packages() {
 	$SCRIPT_INSTALL_COMMAND \
 		git \
-		curl \
 		htop \
 		sudo \
 		wget \
 		man-db \
-		man-pages \
+		man-pages
 
+	install_curl
 	install_ssh
 	install_tmux
 	install_neovim

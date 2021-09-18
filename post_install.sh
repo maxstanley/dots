@@ -1,18 +1,27 @@
 #!/bin/bash
 
 export ROOT_COMMAND="sudo "
-export SCRIPT_INSTALL_COMMAND="${ROOT_COMMAND}pacman -S --noconfirm"
+export SCRIPT_INSTALL_COMMAND="${ROOT_COMMAND}pacman -S --noconfirm --needed"
 export DOTS_FOLDER="$HOME/.dots"
 
-function source_files_in_folder() {
-	for file in $1; do
+function source_all_files() {
+	for file in $DOTS_FOLDER/helper_scripts/*.sh; do
+		echo "Sourcing $file"
+		source $file
+	done
+
+	for file in $DOTS_FOLDER/post_install_scripts/*.sh; do
+		echo "Sourcing $file"
+		source $file
+	done
+
+	for file in $DOTS_FOLDER/post_install_scripts/**/*.sh; do
+		echo "Sourcing $file"
 		source $file
 	done
 }
 
-source_files_in_folder ./helper_scripts/*.sh
-source_files_in_folder ./post_install_scripts/*.sh
-source_files_in_folder ./post_install_scripts/**/*.sh
+source_all_files
 
 install_default_packages
 link_default_files

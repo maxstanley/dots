@@ -4,7 +4,7 @@ function install_display_manager {
 		i3status \
 		xorg-server \
 		xorg-xinit \
-		xfce-power-manager \
+		xfce4-power-manager \
 		lightdm-gtk-greeter \
 		rofi \
 		ttf-roboto-mono
