@@ -11,6 +11,6 @@ function link_files() {
 	file_array=("$@")
 
 	for file in "${file_array[@]}"; do
-		ln -sfn $DOTS_FOLDER/$file $HOME/$file
+		ln -sfn $DOTS_FOLDER/config/$file $HOME/$file
 	done
 }

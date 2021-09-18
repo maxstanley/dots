@@ -11,6 +11,7 @@ function install_default_packages() {
 	install_ssh
 	install_tmux
 	install_neovim
+	install_zsh
 }
 
 function link_default_files() {
