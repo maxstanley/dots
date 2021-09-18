@@ -27,7 +27,6 @@ function install_neovim() {
 		coc-html \
 		coc-json \
 		coc-python \
-		coc-rls \
 		coc-rome \
 		coc-rust-analyzer \
 		coc-sh \
