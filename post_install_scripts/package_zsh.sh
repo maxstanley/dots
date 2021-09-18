@@ -12,4 +12,6 @@ function install_zsh() {
 		"starship.toml"
 	)
 	link_folders "${config_files[@]}"
+
+	$ROOT_COMMAND usermod --shell /bin/zsh $DOT_USER
 }

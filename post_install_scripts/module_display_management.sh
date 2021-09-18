@@ -9,6 +9,7 @@ function install_display_manager {
 		rofi \
 		ttf-roboto-mono
 
+	install_alacritty
 	install_vncserver
 	enable_service lightdm
 
@@ -22,17 +23,4 @@ function install_display_manager {
 		".xinitrc"
 	)
 	link_files "${files[@]}"
-
-	install_alacritty
-}
-
-function install_vncserver() {
-	${SCRIPT_INSTALL_COMMAND} \
-		tigervnc \
-		xss-lock \
-		light-locker \
-		network-manager-applet \
-		xorg-server \
-		xorg-xinit \
-		xterm
 }

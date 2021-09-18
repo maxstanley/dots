@@ -9,6 +9,7 @@ function install_default_packages() {
 
 	$ROOT_COMMAND usermod -a -G wheel $DOT_USER	
 
+	install_ufw
 	install_curl
 	install_ssh
 	install_tmux
