@@ -30,6 +30,8 @@ return require("packer").startup(function()
 
 	-- IDE
 	use("lewis6991/gitsigns.nvim")
-	use { 'TimUntersberger/neogit', requires = 'nvim-lua/plenary.nvim' }
+	use("TimUntersberger/neogit", { requires = "nvim-lua/plenary.nvim" })
 	use("windwp/nvim-autopairs")
+	use("hood/popui.nvim")
+	use("RishabhRD/popfix")
 end)
