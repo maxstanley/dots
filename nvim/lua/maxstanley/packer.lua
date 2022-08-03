@@ -6,6 +6,7 @@ return require("packer").startup(function()
 
 	-- Color Scheme
     use("RRethy/nvim-base16")
+	use("nvim-treesitter/nvim-treesitter", { run = ":TSUpdate" })
 
 	-- LSP
 	use("neovim/nvim-lspconfig")
