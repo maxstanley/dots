@@ -1,0 +1,49 @@
+#!/usr/bin/env bash
+
+self_script_directory=$( dirname -- "$( readlink -f -- "$0"; )"; )
+
+dot_config_directories=(
+	"nvim"
+	"bat"
+	"starship"
+)
+
+mkdir -p $HOME/.config
+
+for config in "${dot_config_directories[@]}"; do
+	destination="$HOME/.config/$config"
+
+	if [[ -L $destination ]]; then
+		continue
+	fi
+
+	if [[ -f $destination ]]; then
+		echo "$HOME/.config/$config exists and is not a symbolic link"
+	else
+		ln -s $self_script_directory/$config $HOME/.config/
+	fi
+done
+
+dot_home_files=(
+	"git/.gitconfig"
+	"tmux/.tmux.conf"	
+	"zsh/.zprofile"
+	"zsh/.zshenv"
+	"zsh/.zshrc"
+)
+
+for config in "${dot_home_files[@]}"; do
+	filename=$(basename "$config")
+	destination="$HOME/$filename"
+
+	if [[ -L $destination ]]; then
+		continue
+	fi
+
+	if [[ -f $destination ]]; then
+		echo "$HOME/$config exists and is not a symbolic link"
+	else
+		ln -s $self_script_directory/$config $HOME
+	fi
+done
+

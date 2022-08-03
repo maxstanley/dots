@@ -1,0 +1,10 @@
+neovim
+rustup
+zsh
+
+# cargo install
+bat
+exa
+rip
+starship
+ripgrep

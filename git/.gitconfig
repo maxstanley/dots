@@ -1,0 +1,7 @@
+[user]
+	name = Max Stanley
+	email = github@maxstanley.uk
+[init]
+	defaultBranch = main
+[core]
+	editor = nvim
