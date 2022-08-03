@@ -28,5 +28,7 @@ return require("packer").startup(function()
 	use("simrat39/rust-tools.nvim")
 
 	-- IDE
+	use("lewis6991/gitsigns.nvim")
+	use { 'TimUntersberger/neogit', requires = 'nvim-lua/plenary.nvim' }
 	use("windwp/nvim-autopairs")
 end)
