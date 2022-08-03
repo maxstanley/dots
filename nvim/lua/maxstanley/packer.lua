@@ -26,4 +26,7 @@ return require("packer").startup(function()
 	-- Rust
 	use("rust-lang/rust.vim")
 	use("simrat39/rust-tools.nvim")
+
+	-- IDE
+	use("windwp/nvim-autopairs")
 end)
