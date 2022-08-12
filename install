@@ -6,6 +6,9 @@ dot_config_directories=(
 	"nvim"
 	"bat"
 	"starship"
+	"sway"
+	"waybar"
+	"kanshi"
 )
 
 mkdir -p $HOME/.config
@@ -18,7 +21,7 @@ for config in "${dot_config_directories[@]}"; do
 	fi
 
 	if [[ -f $destination ]]; then
-		echo "$HOME/.config/$config exists and is not a symbolic link"
+		echo "$destination exists and is not a symbolic link"
 	else
 		ln -s $self_script_directory/$config $HOME/.config/
 	fi
@@ -47,3 +50,5 @@ for config in "${dot_home_files[@]}"; do
 	fi
 done
 
+envsubst < $self_script_directory/dots.sudoers | sudo tee /etc/sudoers.d/dots
+sudo chmod 600 /etc/sudoers.d/dots

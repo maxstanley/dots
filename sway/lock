@@ -1,0 +1,15 @@
+#!/usr/bin/env bash
+
+# https://github.com/swaywm/swaylock/issues/49#issuecomment-462143402
+
+# Turn the screen off in 5 seconds.
+# Turn the screens on after a key is pressed.
+swayidle \
+	timeout 5 'swaymsg "output * dpms off"' \
+	resume 'swaymsg "output * dpms on"' &
+
+# Lock the machine
+swaylock -c 000000 --ignore-empty-password
+
+# Kill the last backgrounded task
+kill %%

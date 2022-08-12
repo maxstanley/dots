@@ -1,0 +1,2 @@
+$USER ALL = (root) NOPASSWD: /usr/sbin/shutdown now
+$USER ALL = (root) NOPASSWD: /usr/bin/light

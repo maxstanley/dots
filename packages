@@ -1,6 +1,14 @@
 neovim
 rustup
 zsh
+sway
+wdisplays
+wl-clipboard
+kanshi
+wofi
+swaylock
+swayidle
+light
 
 # cargo install
 bat
@@ -8,3 +16,8 @@ exa
 rip
 starship
 ripgrep
+
+# manual install
+waybar
+sway-overfocus
+wluma
