@@ -1,5 +1,4 @@
 local lsp = require("lsp-zero")
-local cmp = require("maxstanley.lsp.cmp")
 
 -- Format on save.
 vim.cmd [[autocmd BufWritePre * lua vim.lsp.buf.format()]]
@@ -50,8 +49,6 @@ require("mason-null-ls").setup({
     }
 })
 
-local nvim_cmp_config = cmp.NvimCmpConfiguration(lsp.defaults.cmp_mappings())
-
 local lsp_on_attach = function(client, bufnr)
     local opts = { buffer = bufnr, remap = false }
     local bind = vim.keymap.set
@@ -88,9 +85,16 @@ local rust_analyzer_config = {
     }
 }
 
-lsp.preset("recommended")
+local clang_config = {
+    on_new_config = function(new_config, new_cwd)
+        local status, cmake = pcall(require, "cmake-tools")
+        if status then
+            cmake.clangd_on_new_config(new_config)
+        end
+    end
+}
 
-lsp.setup_nvim_cmp(nvim_cmp_config)
+lsp.preset("recommended")
 
 lsp.set_preferences({
     sign_icons = {
@@ -103,6 +107,7 @@ lsp.set_preferences({
 
 lsp.on_attach(lsp_on_attach)
 
+lsp.configure("clangd", clang_config)
 lsp.configure("rust_analyzer", rust_analyzer_config)
 lsp.configure("yamlls", yamlls_config)
 
@@ -111,3 +116,20 @@ lsp.setup()
 vim.diagnostic.config({
     virtual_text = true,
 })
+
+require("cmake-tools").setup {
+    cmake_command = "cmake",
+    cmake_build_directory = "out",
+    cmake_build_directory_prefix = "",
+    cmake_generate_options = { "-D", "CMAKE_EXPORT_COMPILE_COMMANDS=1" },
+    cmake_soft_link_compile_commands = true,
+    cmake_build_options = {},
+    cmake_console_size = 10,
+    cmake_console_position = "belowright",
+    cmake_show_console = "always",
+    cmake_dap_configuration = { name = "cpp", type = "codelldb", request = "launch" },
+    cmake_variants_message = {
+        short = { show = true },
+        long = { show = true, max_length = 40 }
+    }
+}

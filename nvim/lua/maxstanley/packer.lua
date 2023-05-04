@@ -67,6 +67,7 @@ return require("packer").startup(function(use)
 
     -- C++
     use { "p00f/clangd_extensions.nvim" }
+    use { "Civitasv/cmake-tools.nvim" }
 
     -- Markdown
     use { "godlygeek/tabular" }

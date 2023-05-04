@@ -1,13 +1,10 @@
-local lsp = require("lsp-zero")
 local cmp = require("cmp")
 
-local P = {}
+local scroll_distance = 4
+local cmp_select = { behavior = cmp.SelectBehavior.Select }
 
-function P.NvimCmpConfiguration(mapping)
-    local scroll_distance = 4
-    local cmp_select = { behavior = cmp.SelectBehavior.Select }
-
-    local cmp_mappings = {
+cmp.setup({
+    mapping = {
         -- Select intellisense item
         ["<CR>"] = cmp.mapping.confirm({ select = true }),
         ["<Tab>"] = cmp.mapping.select_next_item(cmp_select),
@@ -19,9 +16,8 @@ function P.NvimCmpConfiguration(mapping)
 
         -- Abort docs
         ["<Esc>"] = cmp.mapping.abort(),
-    }
-
-    local cmp_sources = {
+    },
+    sources = {
         {
             name = "path",
             priority = 1,
@@ -47,11 +43,4 @@ function P.NvimCmpConfiguration(mapping)
             max_item_count = 5,
         },
     }
-
-    return {
-        mapping = vim.tbl_extend("force", cmp_mappings, mapping or {}),
-        source = cmp_sources,
-    }
-end
-
-return P
+})
