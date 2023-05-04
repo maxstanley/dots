@@ -1,14 +1,8 @@
-local treesitter = require("nvim-treesitter.configs")
+local base16 = require("base16-colorscheme")
 
-vim.cmd("colorscheme base16-tomorrow-night-eighties")
-
-treesitter.setup({
-	ensure_installed = "all",
-	sync_install = false,
-
-	highlight = {
-		enable = true,
-		additional_vim_regex_highlighting = true,
-	},
+base16.with_config({
+    telescope = true,
+    cmp = true,
 })
 
+vim.cmd("colorscheme base16-tomorrow-night-eighties")

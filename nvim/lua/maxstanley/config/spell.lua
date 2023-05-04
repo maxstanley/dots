@@ -1,7 +1,6 @@
-local Remap = require("maxstanley.keymap")
-local nnoremap = Remap.nnoremap
+local nnoremap = require("maxstanley.keymap").nnoremap
 
-vim.opt.spell = false
+vim.opt.spell = true
 vim.opt.spelllang = "en_gb"
 
 nnoremap("<Leader>z", ":set spell!<CR>")

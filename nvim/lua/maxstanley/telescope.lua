@@ -1,31 +1,35 @@
 local telescope = require("telescope")
 local sorters = require("telescope.sorters")
 local previewers = require("telescope.previewers")
-
-local Remap = require("maxstanley.keymap")
-local nnoremap = Remap.nnoremap
+local nnoremap = require("maxstanley.keymap").nnoremap
 
 telescope.setup({
-	defaults = {
-		file_sorter = sorters.get_fzy_sorter,
-		prompt_prefix = "> ",
-		color_devicons = true,
+    defaults = {
+        file_sorter = sorters.get_fzy_sorter,
+        prompt_prefix = "> ",
+        color_devicons = true,
 
-		file_previewer = previewers.vim_buffer_cat.new,
-		grep_previewer = previewers.vim_buffer_vimgrep.new,
-		qflist_previewer = previewers.vim_buffer_qflist.new,
+        file_previewer = previewers.vim_buffer_cat.new,
+        grep_previewer = previewers.vim_buffer_vimgrep.new,
+        qflist_previewer = previewers.vim_buffer_qflist.new,
 
-		vimgrep_arguments = {
-			"rg",
-			"--color=never",
-			"--no-heading",
-      		"--with-filename",
-      		"--line-number",
-      		"--column",
-      		"--smart-case",
-      		"--trim"
-		}
-	}
+        vimgrep_arguments = {
+            "rg",
+            "--color=never",
+            "--no-heading",
+            "--with-filename",
+            "--line-number",
+            "--column",
+            "--smart-case",
+            "--trim"
+        },
+
+        mappings = {
+            i = {
+                ["<C-u>"] = false,
+            }
+        }
+    }
 })
 
 telescope.load_extension("git_worktree")

@@ -1,75 +1,113 @@
-local Remap = require("maxstanley.keymap")
-local lspconfig = require("lspconfig")
-local cmp = require("cmp")
-local luasnip = require("luasnip")
-local rust_tools = require("rust-tools")
+local lsp = require("lsp-zero")
+local cmp = require("maxstanley.lsp.cmp")
 
-local nnoremap = Remap.nnoremap
+-- Format on save.
+vim.cmd [[autocmd BufWritePre * lua vim.lsp.buf.format()]]
 
-cmp.setup({
-	mapping = cmp.mapping.preset.insert({
-		["<Up>"] = cmp.mapping.scroll_docs(-4),
-		["<Down>"] = cmp.mapping.scroll_docs(4),
-	 	["<Esc>"] = cmp.mapping.abort(),
-	 	["<CR>"] = cmp.mapping.confirm({ select = true }),
-	 	["<C-Space>"] = cmp.mapping.complete(),
-		["<Tab>"] = cmp.mapping(function(fallback)
-			if cmp.visible() then cmp.select_next_item()
-			elseif luasnip.expand_or_jumpable() then
-			  luasnip.expand_or_jump()
-			else
-			  fallback()
-			end
-		end, { "i", "s" }), ["<S-Tab>"] = cmp.mapping(function(fallback)
-			if cmp.visible() then
-			  cmp.select_prev_item()
-			elseif luasnip.jumpable(-1) then
-			  luasnip.jump(-1)
-			else
-			  fallback()
-			end
-		end, { "i", "s" }),
-	}),
-	snippet = {
-		expand = function(args)
-			luasnip.lsp_expand(args.body)
-		end
-	},
-	sources = cmp.config.sources({
-		{ name = "nvim_lsp" },
-		{ name = "luasnip" },
-		{ name = "path" },
-	}),
-	-- completion = {
-	-- 	completeopt = "menu,menuone,noinsert",
-	-- 	autocomplete = true,
-	-- },
+-- https://github.com/williamboman/mason-lspconfig.nvim#available-lsp-servers
+local lsp_servers = {
+    "bashls",
+    "clangd",
+    "dockerls",
+    "docker_compose_language_service",
+    "eslint",
+    "gopls",
+    "html",
+    "jsonls",
+    "lua_ls",
+    "marksman",
+    "neocmake",
+    "pyright",
+    "rnix",
+    "rust_analyzer",
+    "terraformls",
+    "tsserver",
+    "yamlls"
+}
+
+require("mason").setup({})
+
+require("mason-lspconfig").setup({
+    automatic_installation = true,
+    ensure_installed = lsp_servers
 })
 
-local function config(_config)
-	return vim.tbl_deep_extend("force", {
-		capabilities = require("cmp_nvim_lsp").update_capabilities(vim.lsp.protocol.make_client_capabilities()),
-		on_attach = function()
-			nnoremap("<Leader>kd", function() vim.lsp.buf.definition() end)
-			nnoremap("<Leader>kf", function() vim.lsp.buf.declaration() end)
-		end,
-	}, _config or {})
+require("mason-null-ls").setup({
+    automatic_installation = true,
+    ensure_installed = {
+        "clang-format",
+        "cmakelang",
+        "fixjson",
+        "goimports",
+        "luaformatter",
+        "markdownlint",
+        "prettier",
+        "ruff",
+        "rustfmt",
+        "shellcheck",
+        "shellharden",
+        "yamlfmt"
+    }
+})
+
+local nvim_cmp_config = cmp.NvimCmpConfiguration(lsp.defaults.cmp_mappings())
+
+local lsp_on_attach = function(client, bufnr)
+    local opts = { buffer = bufnr, remap = false }
+    local bind = vim.keymap.set
+
+    bind("n", "<Leader>ki", vim.lsp.buf.hover, opts)
+
+    bind("n", "<Leader>kd", vim.lsp.buf.definition, opts)
+    bind("n", "<Leader>kf", vim.lsp.buf.declaration, opts)
+    bind("n", "<Leader>ks", vim.lsp.buf.references, opts)
+
+    bind("n", "<Leader>ka", vim.lsp.buf.code_action, opts)
+    bind("n", "<Leader>kr", vim.lsp.buf.rename, opts)
 end
 
-rust_tools.setup({
-	tools = {
-		on_initialized = function(_health)
-			nnoremap("<Leader>kk", "<cmd>:RustMoveItemUp<CR>")
-			nnoremap("<Leader>kj", "<cmd>:RustMoveItemDown<CR>")
-		end
-	},
-	server = config({
-		cargo = {
-			allFeatures = true
-		},
-		checkOnSave = {
-			command = "clippy"
-		},
-	}),
+local yamlls_config = {
+    settings = {
+        yaml = {
+            keyOrdering = false,
+            schemas = {
+                ["https://gitlab.com/gitlab-org/gitlab/-/raw/master/app/assets/javascripts/editor/schema/ci.json"] = "/.gitlab-ci.yml",
+            }
+        }
+    }
+}
+
+local rust_analyzer_config = {
+    server = {
+        cargo = {
+            allFeatures = true,
+        },
+        checkOnSave = {
+            command = "clippy",
+        }
+    }
+}
+
+lsp.preset("recommended")
+
+lsp.setup_nvim_cmp(nvim_cmp_config)
+
+lsp.set_preferences({
+    sign_icons = {
+        error = "E",
+        warn = "W",
+        hint = "H",
+        info = "I",
+    }
 })
 
+lsp.on_attach(lsp_on_attach)
+
+lsp.configure("rust_analyzer", rust_analyzer_config)
+lsp.configure("yamlls", yamlls_config)
+
+lsp.setup()
+
+vim.diagnostic.config({
+    virtual_text = true,
+})

@@ -7,10 +7,8 @@ require("maxstanley.config.spell")
 require("maxstanley.config.search")
 require("maxstanley.ide")
 require("maxstanley.ide.git")
+require("maxstanley.ide.tasks")
 require("maxstanley.lsp")
 require("maxstanley.keymap")
 require("maxstanley.telescope")
-
--- local hour = tonumber(os.date("%H%M"))
--- print(hour)
-
+require("maxstanley.treesitter")
