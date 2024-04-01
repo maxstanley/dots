@@ -1,54 +1,13 @@
 #!/usr/bin/env bash
+set -e
+set -x
 
-self_script_directory=$( dirname -- "$( readlink -f -- "$0"; )"; )
-
-dot_config_directories=(
-	"nvim"
+packages=(
 	"bat"
+	"git"
+	"nvim"
 	"starship"
-	"sway"
-	"waybar"
-	"kanshi"
+	"tmux"
 )
 
-mkdir -p $HOME/.config
-
-for config in "${dot_config_directories[@]}"; do
-	destination="$HOME/.config/$config"
-
-	if [[ -L $destination ]]; then
-		continue
-	fi
-
-	if [[ -f $destination ]]; then
-		echo "$destination exists and is not a symbolic link"
-	else
-		ln -s $self_script_directory/$config $HOME/.config/
-	fi
-done
-
-dot_home_files=(
-	"git/.gitconfig"
-	"tmux/.tmux.conf"	
-	"zsh/.zprofile"
-	"zsh/.zshenv"
-	"zsh/.zshrc"
-)
-
-for config in "${dot_home_files[@]}"; do
-	filename=$(basename "$config")
-	destination="$HOME/$filename"
-
-	if [[ -L $destination ]]; then
-		continue
-	fi
-
-	if [[ -f $destination ]]; then
-		echo "$HOME/$config exists and is not a symbolic link"
-	else
-		ln -s $self_script_directory/$config $HOME
-	fi
-done
-
-envsubst < $self_script_directory/dots.sudoers | sudo tee /etc/sudoers.d/dots
-sudo chmod 600 /etc/sudoers.d/dots
+stow --target="${HOME}" --restow ${packages[*]}
