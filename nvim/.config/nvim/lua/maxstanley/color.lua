@@ -5,4 +5,5 @@ base16.with_config({
     cmp = true,
 })
 
+vim.opt.termguicolors = true
 vim.cmd("colorscheme base16-tomorrow-night-eighties")
