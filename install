@@ -15,6 +15,7 @@ done
 set -x
 
 packages=(
+	"bash"
 	"bat"
 	"git"
 	"nvim"
