@@ -88,6 +88,7 @@ fi
 shell_files=(
     "aliases"
     "history"
+    "xdg"
 )
 
 for file in "${shell_files[@]}"; do
