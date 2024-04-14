@@ -1,7 +1,4 @@
 # Lines configured by zsh-newuser-install
-HISTFILE=~/.zsh_history
-HISTSIZE=10000
-SAVEHIST=10000
 unsetopt beep
 bindkey -v
 # End of lines configured by zsh-newuser-install
@@ -19,6 +16,9 @@ source "$HOME/.cargo/env"
 
 # Aliases
 source "$HOME/.config/shell/aliases"
+
+# env
+source "$HOME/.config/shell/env"
 
 # Add rust nightly bin/ to PATH
 export PATH=$PATH:$HOME/.rustup/toolchains/nightly-aarch64-unknown-linux-gnu/bin/
