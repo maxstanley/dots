@@ -6,6 +6,6 @@ shopt -s histappend
 HISTCONTROL=ignoreboth
 
 # for setting history length see HISTSIZE and HISTFILESIZE in bash(1)
-HISTFILE=~/.config/shell/history
+HISTFILE=~/.shell_history
 HISTSIZE=1000
 SAVEHIST=2000
