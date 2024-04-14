@@ -18,19 +18,7 @@ bindkey '^R' history-incremental-search-backward
 source "$HOME/.cargo/env"
 
 # Aliases
-alias vi="nvim"
-alias vim="nvim"
- 
-alias   ls="exa --color=auto --long --header --binary --group --group-directories-first --time-style=long-iso"
-alias   la="exa --color=auto --long --header --binary --group --group-directories-first --time-style=long-iso --all"
-alias   ll="exa --color=auto --long --header --binary --group --group-directories-first --time-style=long-iso --all"
-alias tree="exa --color=auto --long --header --binary --group --group-directories-first --time-style=long-iso --tree"
-
-alias cat="bat"
-alias cat="less"
-
-alias rm='echo "Use rip"'
-alias rip="rip --graveyard $HOME/.graveyard"
+source "$HOME/.config/shell/aliases"
 
 # Add rust nightly bin/ to PATH
 export PATH=$PATH:$HOME/.rustup/toolchains/nightly-aarch64-unknown-linux-gnu/bin/

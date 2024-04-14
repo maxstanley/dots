@@ -1,0 +1,10 @@
+alias vi="nvim"
+alias vim="nvim"
+
+alias ls="exa --color=auto --long --header --binary --group --group-directories-first --time-style=long-iso"
+alias la="${ls} --all"
+alias ll="${ls} --all"
+alias tree="${ls} --tree"
+
+alias cat="bat"
+alias less="bat"

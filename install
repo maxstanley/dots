@@ -1,11 +1,24 @@
 #!/usr/bin/env bash
 set -e
+
+dependencies=(
+    "stow"
+)
+
+for package in "${dependencies[@]}"; do
+    if ! command  -v "${package}" &> /dev/null; then
+        echo "${package} - could not be found"
+		exit 1
+    fi
+done
+
 set -x
 
 packages=(
 	"bat"
 	"git"
 	"nvim"
+	"shell"
 	"starship"
 	"tmux"
 )
