@@ -77,8 +77,15 @@ curl -fsSL https://fnm.vercel.app/install | bash
 # https://github.com/koalaman/shellcheck
 curl -LO https://github.com/koalaman/shellcheck/releases/download/v0.10.0/shellcheck-v0.10.0.linux.x86_64.tar.xz
 tar xf shellcheck-v0.10.0.linux.x86_64.tar.xz
-mv shellcheck-v0.10.0/shellcheck $(BIN_DIR)/
+mv shellcheck-v0.10.0/shellcheck "${BIN_DIR}/"
 rm -rf shellcheck-v0.10.0 shellcheck-v0.10.0.linux.x86_64.tar.xz
+
+# lurk
+# https://github.com/JakWai01/lurk/tree/main
+curl -LO https://github.com/JakWai01/lurk/releases/latest/download/lurk-x86_64-unknown-linux-gnu.tar.gz
+tar xzf lurk-x86_64-unknown-linux-gnu.tar.gz
+mv lurk "${BIN_DIR}/"
+rm -rf lurk-x86_64-unknown-linux-gnu.tar.gz
 
 popd
 
