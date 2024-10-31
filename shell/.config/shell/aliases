@@ -1,5 +1,6 @@
 alias vi="nvim"
 alias vim="nvim"
+alias vimdiff="nvim -d"
 
 alias ls="eza --color=auto --long --header --binary --group --group-directories-first --time-style=long-iso --git-ignore"
 alias la="eza --color=auto --long --header --binary --group --group-directories-first --time-style=long-iso --git-ignore --all"

@@ -1,0 +1,19 @@
+#!/usr/bin/env bash
+set -e
+
+if [[ $# -lt 2 || $# -gt 4 ]]; then
+	echo "xdiff files..."
+	exit 1
+fi
+
+while [[ $# -gt 0 ]]; do
+	TMP_FILES+=("$(mktemp)")
+
+	xxd "${1}" >"${TMP_FILES[-1]}"
+
+	shift
+done
+
+nvim -d "${TMP_FILES[@]}"
+
+rm "${TMP_FILES[@]}"
