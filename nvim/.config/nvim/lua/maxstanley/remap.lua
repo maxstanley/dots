@@ -1,3 +1,5 @@
+vim.g.mapleader = " "
+
 -- Visually select a block, use J/K to move the block down/up
 vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv")
 vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv")

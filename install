@@ -15,13 +15,12 @@ done
 set -x
 
 packages=(
+	"shell"
 	"bash"
 	"bat"
 	"git"
-	"nvim"
-	"shell"
-	"starship"
 	"tmux"
+	"nvim"
 )
 
 stow --target="${HOME}" --restow ${packages[*]}

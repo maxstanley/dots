@@ -86,9 +86,13 @@ if ! shopt -oq posix; then
 fi
 
 shell_files=(
+    "path"
     "aliases"
+    "eval"
     "history"
+    "source"
     "xdg"
+    "fnm"
 )
 
 for file in "${shell_files[@]}"; do

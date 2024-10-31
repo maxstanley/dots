@@ -1,10 +1,15 @@
 alias vi="nvim"
 alias vim="nvim"
 
-alias ls="eza --color=auto --long --header --binary --group --group-directories-first --time-style=long-iso"
-alias la="eza --color=auto --long --header --binary --group --group-directories-first --time-style=long-iso --all"
-alias ll="eza --color=auto --long --header --binary --group --group-directories-first --time-style=long-iso --all"
-alias tree="eza --color=auto --long --header --binary --group --group-directories-first --time-style=long-iso --tree"
+alias ls="eza --color=auto --long --header --binary --group --group-directories-first --time-style=long-iso --git-ignore"
+alias la="eza --color=auto --long --header --binary --group --group-directories-first --time-style=long-iso --git-ignore --all"
+alias ll="eza --color=auto --long --header --binary --group --group-directories-first --time-style=long-iso --git-ignore --all"
 
-alias cat="bat"
-alias less="bat"
+alias tree="eza --color=auto --header --binary --group --group-directories-first --time-style=long-iso --git-ignore --tree"
+alias treea="eza --color=auto --header --binary --group --group-directories-first --time-style=long-iso --git-ignore --tree --long"
+alias treel="eza --color=auto --header --binary --group --group-directories-first --time-style=long-iso --git-ignore --tree --long"
+
+alias cat="bat --paging=auto"
+alias less="bat --paging=always"
+
+alias cd="z"

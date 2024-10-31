@@ -1,8 +1,5 @@
 local tasks = require("vstask")
 local telescope = require("telescope")
-local nnoremap = require("maxstanley.keymap").nnoremap
-
-nnoremap("<Leader>t", function() telescope.extensions.vstask.tasks() end)
 
 tasks.setup({
     cache_strategy = "last",
@@ -10,3 +7,5 @@ tasks.setup({
         npm = "on"
     }
 })
+
+vim.keymap.set("n", "<leader>t", function() telescope.extensions.vstask.tasks() end)

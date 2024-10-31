@@ -1,7 +1,6 @@
 local telescope = require("telescope")
 local sorters = require("telescope.sorters")
 local previewers = require("telescope.previewers")
-local nnoremap = require("maxstanley.keymap").nnoremap
 
 telescope.setup({
     defaults = {
@@ -35,5 +34,5 @@ telescope.setup({
 telescope.load_extension("git_worktree")
 telescope.load_extension("live_grep_args")
 
-nnoremap("<Leader>ff", "<cmd>lua require('telescope.builtin').find_files()<CR>")
-nnoremap("<Leader>fa", "<cmd>lua require('telescope.builtin').live_grep()<CR>")
+vim.keymap.set("n", "<leader>ff", "<cmd>lua require('telescope.builtin').find_files()<CR>")
+vim.keymap.set("n", "<leader>fa", "<cmd>lua require('telescope.builtin').live_grep()<CR>")
