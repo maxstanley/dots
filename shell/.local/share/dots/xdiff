@@ -6,8 +6,11 @@ if [[ $# -lt 2 || $# -gt 4 ]]; then
 	exit 1
 fi
 
+TMP_DIR="/tmp/xdiff"
+mkdir -p "${TMP_DIR}"
+
 while [[ $# -gt 0 ]]; do
-	TMP_FILES+=("$(mktemp)")
+	TMP_FILES+=("$(mktemp -p "${TMP_DIR}")")
 
 	xxd "${1}" >"${TMP_FILES[-1]}"
 
