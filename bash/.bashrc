@@ -88,6 +88,7 @@ fi
 shell_files=(
     "path"
     "aliases"
+    "functions"
     "eval"
     "history"
     "source"
