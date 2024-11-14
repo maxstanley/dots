@@ -1,0 +1,18 @@
+{
+    "recommendations": [
+        "tintedtheming.base16-tinted-themes",
+        "ms-python.python",
+        "redhat.ansible",
+        "editorconfig.editorconfig",
+        "eamodio.gitlens",
+        "golang.go",
+        "hashicorp.terraform",
+        "yzhang.markdown-all-in-one",
+        "takumii.markdowntable",
+        "charliermarsh.ruff",
+        "rust-lang.rust-analyzer",
+        "vscodevim.vim",
+        "redhat.vscode-yaml",
+        "tamasfe.even-better-toml"
+    ]
+}
