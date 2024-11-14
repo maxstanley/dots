@@ -21,6 +21,7 @@ packages=(
 	"git"
 	"tmux"
 	"nvim"
+	"code"
 )
 
 stow --target="${HOME}" --restow ${packages[*]}
