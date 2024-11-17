@@ -3,7 +3,7 @@ set -e
 set -x
 
 BIN_DIR="${HOME}/.local/bin"
-TMP_DIR=$(mktemp -d)
+TMP_DIR=$(mktemp -d "${HOME}/.tmp")
 
 mkdir -p "${BIN_DIR}"
 

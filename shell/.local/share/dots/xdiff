@@ -6,7 +6,7 @@ if [[ $# -lt 2 || $# -gt 4 ]]; then
 	exit 1
 fi
 
-TMP_DIR="/tmp/xdiff"
+TMP_DIR="${HOME}/.tmp/xdiff"
 mkdir -p "${TMP_DIR}"
 
 while [[ $# -gt 0 ]]; do

@@ -89,6 +89,7 @@ shell_files=(
     "path"
     "aliases"
     "functions"
+	"env"
     "eval"
     "history"
     "source"

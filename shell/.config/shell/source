@@ -1,2 +1,2 @@
 [[ -s "$HOME/.cargo/env" ]] && . "$HOME/.cargo/env"
-[[ -s "/home/max/.gvm/scripts/gvm" ]] && source "/home/max/.gvm/scripts/gvm"
+[[ -s "/usr/local/bin/alacritty" ]] && source "${HOME}/.bash_completion/alacritty"

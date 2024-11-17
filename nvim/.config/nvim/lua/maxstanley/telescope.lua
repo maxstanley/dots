@@ -28,7 +28,18 @@ telescope.setup({
                 ["<C-u>"] = false,
             }
         }
-    }
+    },
+   pickers = {
+        find_files = {
+            find_command = {
+                "rg",
+                "--files",
+                "--hidden",
+                "--glob",
+                "!**/.git/*"
+            },
+        },
+    },
 })
 
 telescope.load_extension("git_worktree")

@@ -2,14 +2,14 @@
 set -e
 
 dependencies=(
-    "stow"
+	"stow"
 )
 
 for package in "${dependencies[@]}"; do
-    if ! command  -v "${package}" &> /dev/null; then
-        echo "${package} - could not be found"
+	if ! command -v "${package}" &>/dev/null; then
+		echo "${package} - could not be found"
 		exit 1
-    fi
+	fi
 done
 
 set -x
@@ -22,6 +22,9 @@ packages=(
 	"tmux"
 	"nvim"
 	"code"
+	"sway"
+	"waybar"
+	"alacritty"
 )
 
-stow --target="${HOME}" --restow ${packages[*]}
+stow --target="${HOME}" --restow "${packages[*]}"
