@@ -25,6 +25,7 @@ packages=(
 	"sway"
 	"waybar"
 	"alacritty"
+	"kanshi"
 )
 
-stow --target="${HOME}" --restow "${packages[*]}"
+stow --target="${HOME}" --restow ${packages[*]}

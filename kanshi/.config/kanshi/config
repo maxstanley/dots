@@ -1,0 +1,9 @@
+profile laptop {
+	output eDP-1 position 0,0 scale 2
+}
+
+profile home {
+	output "Dell Inc. DELL S2722QC 184WH24" position 0,0 scale 1.20
+	output "Dell Inc. DELL U2723QE 2MPJ6H3" position 2560,0 scale 1.20
+	output eDP-1 position 5120,360 scale 2
+}
